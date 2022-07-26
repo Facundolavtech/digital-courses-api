@@ -29,12 +29,14 @@ const sendCourseLinkToEmail = (params: ISendCourseLinkToEmail) => {
     picture: params.data.picture,
   });
 
+  const to =
+    process.env.NODE_ENV === 'development'
+      ? process.env.TEST_EMAIL
+      : params.email;
+
   const mailOptions = {
     from: 'formuladearbitrajelg@gmail.com',
-    to:
-      process.env.NODE_ENV === 'development'
-        ? process.env.TEST_EMAIL
-        : params.email,
+    to,
     subject: 'Tu curso de emprendedor digital',
     html,
   };
