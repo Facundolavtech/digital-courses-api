@@ -5,8 +5,8 @@ export const transporter = nodemailer.createTransport({
   port: '587',
   secure: false,
   auth: {
-    user: 'formuladearbitrajelg@gmail.com',
-    pass: 'xsmtpsib-376e8cf6e400648b63bd2896b841613ac8eb1af97bf1e4c5194bcdaded273e48-v8g6B01XHzTGpfra',
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
   tls: {
     rejectUnauthorized: false,
