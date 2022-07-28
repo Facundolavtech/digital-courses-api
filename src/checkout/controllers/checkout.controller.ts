@@ -1,4 +1,12 @@
-import { Controller, Get, Body, Param, Response, Post } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Body,
+  Param,
+  Response,
+  Post,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { Response as Res } from 'express';
 import { CheckoutService } from '../services/checkout.service';
 
@@ -10,7 +18,7 @@ export class CheckoutController {
   async create(
     @Response()
     res: Res,
-    @Param('itemId') itemId: string | number,
+    @Param('itemId', ParseIntPipe) itemId: number,
   ) {
     const paymentLink = await this.checkoutService.create(itemId);
 
